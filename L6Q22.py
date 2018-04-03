@@ -41,8 +41,8 @@
 # Your output should be identical to the given results.
 
 
-from math import *
 import random
+from math import *
 
 
 # ===============================================================
@@ -508,7 +508,7 @@ def slam(data, N, num_landmarks, motion_noise, measurement_noise):
     # Add your code here!
     #
     #
-    #The order of actions is sense, then move.
+    # The order of actions is sense, then move.
     Omega = [[0 for _ in range(N + num_landmarks) * 2] for _ in range(N + num_landmarks) * 2]
     Xi = [[0] for _ in range(N + num_landmarks) * 2]
     Omega[0][0] += 1
@@ -706,11 +706,8 @@ result = slam(test_data1, 20, 5, 2.0, 2.0)
 print_result(20, 5, result)
 print result
 
-
 ### Uncomment the following three lines for test case 2 ###
 
 result = slam(test_data2, 20, 5, 2.0, 2.0)
 print_result(20, 5, result)
 print result
-
-

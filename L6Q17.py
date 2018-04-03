@@ -11,7 +11,6 @@
 
 
 from math import *
-import random
 
 
 # ===============================================================
@@ -332,5 +331,3 @@ def doit(initial_pos, move1, move2):
 
 
 print doit(-3, 5, 3)
-
-

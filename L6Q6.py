@@ -10,8 +10,8 @@
 # need to include the equations shown in the video.
 #
 
-from math import *
 import random
+from math import *
 
 # don't change the noise paameters
 
@@ -463,10 +463,10 @@ def run(grid, goal, spath, params, printflag=False, speed=0.1, timeout=1000):
         Ry = y - y1
         dx = x2 - x1
         dy = y2 - y1
-        u =  (Rx * dx - Ry * dy) / sqrt(dx**2 + dy**2)
-        cte = (Ry * dx - Rx * dy) / sqrt(dx**2 + dy**2)
+        u = (Rx * dx - Ry * dy) / sqrt(dx ** 2 + dy ** 2)
+        cte = (Ry * dx - Rx * dy) / sqrt(dx ** 2 + dy ** 2)
         if u > 1:
-            index+=1
+            index += 1
         # ----------------------------------------
 
         diff_cte += cte

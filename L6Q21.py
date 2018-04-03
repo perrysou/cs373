@@ -8,7 +8,6 @@
 
 
 from math import *
-import random
 
 
 # ===============================================================
@@ -360,7 +359,7 @@ def doit(initial_pos, move1, move2, Z0, Z1, Z2):
                      [0.0, 0.0, -5.0, 5.0]])
     Xi += matrix([[0.0],
                   [0.0],
-                  [-Z2 *5],
+                  [-Z2 * 5],
                   [Z2 * 5]])
 
     Omega.show('Omega: ')
@@ -372,5 +371,3 @@ def doit(initial_pos, move1, move2, Z0, Z1, Z2):
 
 
 doit(-3, 5, 3, 10, 5, 1)
-
-

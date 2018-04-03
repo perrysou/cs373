@@ -16,8 +16,8 @@
 #
 # You can find the parameters at line 581.
 
-from math import *
 import random
+from math import *
 
 # don't change the noise paameters
 
@@ -545,7 +545,3 @@ d_gain = 6.0
 
 print main(grid, init, goal, steering_noise, distance_noise, measurement_noise,
            weight_data, weight_smooth, p_gain, d_gain)
-
-
-
-

@@ -14,7 +14,6 @@
 # Add your code at line 356.
 
 from math import *
-import random
 
 
 # ===============================================================
@@ -366,5 +365,3 @@ def doit(initial_pos, move1, move2, Z0, Z1, Z2):
 
 
 doit(-3, 5, 3, 10, 5, 1)
-
-

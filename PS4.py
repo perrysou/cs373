@@ -32,6 +32,7 @@ delta = [
 
 delta_name = ['^', '<', 'v', '>']  # Use these when creating your policy grid.
 
+
 # ---------------------------------------------
 #  Modify the function stochastic_value below
 # ---------------------------------------------
@@ -39,8 +40,8 @@ delta_name = ['^', '<', 'v', '>']  # Use these when creating your policy grid.
 
 def stochastic_value(grid, goal, cost_step, collision_cost, success_prob):
     failure_prob = (
-        1.0 - success_prob
-    ) / 2.0  # Probability(stepping left) = prob(stepping right) = failure_prob
+                           1.0 - success_prob
+                   ) / 2.0  # Probability(stepping left) = prob(stepping right) = failure_prob
     value = [[collision_cost for col in range(len(grid[0]))]
              for row in range(len(grid))]
     policy = [[' ' for col in range(len(grid[0]))] for row in range(len(grid))]

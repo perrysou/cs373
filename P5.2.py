@@ -26,9 +26,6 @@
 # should return True if your answer is correct and False if
 # it is not.
 
-from math import *
-import matplotlib.pyplot as plt
-
 # Do not modify path inside your function.
 path = [[0, 0],
         [1, 0],
@@ -69,7 +66,8 @@ def smooth(path, weight_data=0.1, weight_smooth=0.1, tolerance=0.00001):
         for i in range(0, len(path)):
             for j in range(len(path[i])):
                 old = newpath[i][j]
-                newpath[i][j] += weight_data * (path[i][j] - newpath[i][j]) + weight_smooth * (newpath[(i - 1) % len(path)][j] + newpath[(i + 1) % len(path)][j] - 2.0 * newpath[i][j])
+                newpath[i][j] += weight_data * (path[i][j] - newpath[i][j]) + weight_smooth * (
+                            newpath[(i - 1) % len(path)][j] + newpath[(i + 1) % len(path)][j] - 2.0 * newpath[i][j])
                 delta = abs(old - newpath[i][j])
     return newpath
 

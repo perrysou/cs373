@@ -19,8 +19,8 @@
 # ------------
 
 import random
+
 import numpy as np
-import matplotlib.pyplot as plt
 
 
 # ------------------------------------------------
@@ -135,4 +135,3 @@ def run(param):
 
 
 run(0.3)
-

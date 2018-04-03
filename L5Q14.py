@@ -18,8 +18,10 @@
 # ------------
 
 import random
-import numpy as np
+
 import matplotlib.pyplot as plt
+import numpy as np
+
 
 # ------------------------------------------------
 #
@@ -107,6 +109,7 @@ class Robot(object):
 
     def __repr__(self):
         return '[x=%.5f y=%.5f orient=%.5f]' % (self.x, self.y, self.orientation)
+
 
 ############## ADD / MODIFY CODE BELOW ####################
 # ------------------------------------------------------------------------

@@ -39,6 +39,7 @@ init = [4, 3, 0]  # given in the form [row,col,direction]
 goal = [2, 0]  # given in the form [row,col]
 cost = [2, 1, 20]  # cost has 3 values, corresponding to making
 
+
 # a right turn, no turn, and a left turn
 
 # EXAMPLE OUTPUT:

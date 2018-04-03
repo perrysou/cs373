@@ -1,12 +1,12 @@
 from math import *
-import random
+
 
 class matrix:
 
     def __init__(self, value):
         self.value = value
-        self.dimx  = len(value)
-        self.dimy  = len(value[0])
+        self.dimx = len(value)
+        self.dimy = len(value[0])
         if value == [[]]:
             self.dimx = 0
 
@@ -15,8 +15,8 @@ class matrix:
         if dimx < 1 or dimy < 1:
             raise ValueError, "Invalid size of matrix"
         else:
-            self.dimx  = dimx
-            self.dimy  = dimy
+            self.dimx = dimx
+            self.dimy = dimy
             self.value = [[0 for row in range(dimy)] for col in range(dimx)]
 
     def identity(self, dim):
@@ -24,8 +24,8 @@ class matrix:
         if dim < 1:
             raise ValueError, "Invalid size of matrix"
         else:
-            self.dimx  = dim
-            self.dimy  = dim
+            self.dimx = dim
+            self.dimy = dim
             self.value = [[0 for row in range(dim)] for col in range(dim)]
             for i in range(dim):
                 self.value[i][i] = 1
@@ -34,7 +34,6 @@ class matrix:
         for i in range(self.dimx):
             print self.value[i]
         print ' '
-
 
     def __add__(self, other):
         # check if correct dimensions
@@ -85,8 +84,7 @@ class matrix:
                 res.value[j][i] = self.value[i][j]
         return res
 
-
-    def Cholesky(self, ztol= 1.0e-5):
+    def Cholesky(self, ztol=1.0e-5):
         # Computes the upper triangular Cholesky factorization of
         # a positive definite matrix.
         # This code is based on http://adorio-research.org/wordpress/?p=4560
@@ -94,7 +92,7 @@ class matrix:
         res.zero(self.dimx, self.dimx)
 
         for i in range(self.dimx):
-            S = sum([(res.value[k][i])**2 for k in range(i)])
+            S = sum([(res.value[k][i]) ** 2 for k in range(i)])
             d = self.value[i][i] - S
             if abs(d) < ztol:
                 res.value[i][i] = 0.0
@@ -102,30 +100,30 @@ class matrix:
                 if d < 0.0:
                     raise ValueError, "Matrix not positive-definite"
                 res.value[i][i] = sqrt(d)
-            for j in range(i+1, self.dimx):
+            for j in range(i + 1, self.dimx):
                 S = sum([res.value[k][i] * res.value[k][j] for k in range(i)])
                 if abs(S) < ztol:
                     S = 0.0
-                res.value[i][j] = (self.value[i][j] - S)/res.value[i][i]
+                res.value[i][j] = (self.value[i][j] - S) / res.value[i][i]
         return res
 
     def CholeskyInverse(self):
-	# Computes inverse of matrix given its Cholesky upper Triangular
-	# decomposition of matrix.
+        # Computes inverse of matrix given its Cholesky upper Triangular
+        # decomposition of matrix.
         # This code is based on http://adorio-research.org/wordpress/?p=4560
 
         res = matrix([[]])
         res.zero(self.dimx, self.dimx)
 
-	# Backward step for inverse.
+        # Backward step for inverse.
         for j in reversed(range(self.dimx)):
             tjj = self.value[j][j]
-            S = sum([self.value[j][k]*res.value[j][k] for k in range(j+1, self.dimx)])
-            res.value[j][j] = 1.0/ tjj**2 - S/ tjj
-	    for i in reversed(range(j)):
-                res.value[j][i] = res.value[i][j] = -sum([self.value[i][k]*res.value[k][j] for k in range(i+1,self.dimx)])/self.value[i][i]
+            S = sum([self.value[j][k] * res.value[j][k] for k in range(j + 1, self.dimx)])
+            res.value[j][j] = 1.0 / tjj ** 2 - S / tjj
+            for i in reversed(range(j)):
+                res.value[j][i] = res.value[i][j] = -sum(
+                    [self.value[i][k] * res.value[k][j] for k in range(i + 1, self.dimx)]) / self.value[i][i]
         return res
-
 
     def inverse(self):
         aux = self.Cholesky()

@@ -102,7 +102,7 @@ class matrix:
         res.zero(self.dimx, self.dimx)
 
         for i in range(self.dimx):
-            S = sum([(res.value[k][i])**2 for k in range(i)])
+            S = sum([(res.value[k][i]) ** 2 for k in range(i)])
             d = self.value[i][i] - S
             if abs(d) < ztol:
                 res.value[i][i] = 0.0
@@ -133,7 +133,7 @@ class matrix:
                 self.value[j][k] * res.value[j][k]
                 for k in range(j + 1, self.dimx)
             ])
-            res.value[j][j] = 1.0 / tjj**2 - S / tjj
+            res.value[j][j] = 1.0 / tjj ** 2 - S / tjj
             for i in reversed(range(j)):
                 res.value[j][i] = res.value[i][j] = -sum([
                     self.value[i][k] * res.value[k][j]
@@ -155,7 +155,6 @@ class matrix:
 
 def filter(x, P):
     for n in range(len(measurements)):
-
         # prediction
         x = (F * x) + u
         P = F * P * F.transpose()

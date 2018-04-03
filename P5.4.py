@@ -18,8 +18,8 @@
 # calling it with different robot locations and making
 # sure that it returns the correct crosstrack error.
 
-from math import *
 import random
+from math import *
 
 
 # ------------------------------------------------
@@ -34,7 +34,7 @@ class robot:
     #    creates robot and initializes location/orientation to 0, 0, 0
     #
 
-    def __init__(self, length = 20.0):
+    def __init__(self, length=20.0):
         self.x = 0.0
         self.y = 0.0
         self.orientation = 0.0
@@ -53,7 +53,6 @@ class robot:
         self.x = float(new_x)
         self.y = float(new_y)
         self.orientation = float(new_orientation) % (2.0 * pi)
-
 
     # --------
     # set_noise:
@@ -80,7 +79,7 @@ class robot:
     #    distance = total distance driven, most be non-negative
 
     def move(self, steering, distance,
-             tolerance = 0.001, max_steering_angle = pi / 4.0):
+             tolerance=0.001, max_steering_angle=pi / 4.0):
 
         if steering > max_steering_angle:
             steering = max_steering_angle
@@ -89,10 +88,9 @@ class robot:
         if distance < 0.0:
             distance = 0.0
 
-
         # make a new copy
         res = robot()
-        res.length         = self.length
+        res.length = self.length
         res.steering_noise = self.steering_noise
         res.distance_noise = self.distance_noise
         res.steering_drift = self.steering_drift
@@ -128,14 +126,10 @@ class robot:
 
         return res
 
-
-
-
     def __repr__(self):
-        return '[x=%.5f y=%.5f orient=%.5f]'  % (self.x, self.y, self.orientation)
+        return '[x=%.5f y=%.5f orient=%.5f]' % (self.x, self.y, self.orientation)
 
-
-############## ONLY ADD / MODIFY CODE BELOW THIS LINE ####################
+    ############## ONLY ADD / MODIFY CODE BELOW THIS LINE ####################
 
     def cte(self, radius):
         #
@@ -144,17 +138,17 @@ class robot:
         #
         #
         if self.x <= radius:
-            cte = sqrt((self.x - radius)**2 + (self.y - radius)**2) - radius
+            cte = sqrt((self.x - radius) ** 2 + (self.y - radius) ** 2) - radius
         elif self.x >= 3 * radius:
-            cte = sqrt((self.x - 3 * radius)**2 + (self.y - radius)**2) - radius
+            cte = sqrt((self.x - 3 * radius) ** 2 + (self.y - radius) ** 2) - radius
         elif self.y < radius:
             cte = -self.y
         elif self.y > radius:
             cte = self.y - 2 * radius
         return cte
+
+
 ############## ONLY ADD / MODIFY CODE ABOVE THIS LINE ####################
-
-
 
 
 # ------------------------------------------------------------------------
@@ -162,17 +156,17 @@ class robot:
 # run - does a single control run.
 
 
-def run(params, radius, printflag = False):
+def run(params, radius, printflag=False):
     myrobot = robot()
     myrobot.set(0.0, radius, pi / 2.0)
-    speed = 1.0 # motion distance is equal to speed (we assume time = 1)
+    speed = 1.0  # motion distance is equal to speed (we assume time = 1)
     err = 0.0
     int_crosstrack_error = 0.0
     N = 200
 
-    crosstrack_error = myrobot.cte(radius) # You need to define the cte function!
+    crosstrack_error = myrobot.cte(radius)  # You need to define the cte function!
 
-    for i in range(N*2):
+    for i in range(N * 2):
         diff_crosstrack_error = - crosstrack_error
         crosstrack_error = myrobot.cte(radius)
         diff_crosstrack_error += crosstrack_error
@@ -186,6 +180,7 @@ def run(params, radius, printflag = False):
         if printflag:
             print myrobot
     return err / float(N)
+
 
 radius = 25.0
 params = [10.0, 15.0, 0]
